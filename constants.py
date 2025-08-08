@@ -15,6 +15,8 @@ BLACK = (0, 0, 0)
 GRAY = (50, 50, 50)
 LIGHT_GRAY = (100, 100, 100)
 RED = (255, 0, 0)
+UI_COLOR = (230, 230, 230)
+UI_ACCENT = (255, 215, 0)
 
 COLORS = [
     (0, 255, 255),   # I (CYAN)    

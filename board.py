@@ -21,14 +21,6 @@ class Board:
         for x, y in piece.get_blocks():
             self.grid[y][x] = piece.color
 
-    def clear_lines(self):
-        cleared = 0
-        new_grid = [row for row in self.grid if any(cell is None for cell in row)]
-        cleared = self.height - len(new_grid)
-        while len(new_grid) < self.height:
-            new_grid.insert(0, [None for _ in range(self.width)])
-        self.grid = new_grid
-        return cleared
 
     def draw(self, screen):
         for y in range(self.height):
@@ -38,3 +30,11 @@ class Board:
                     rect = pygame.Rect(PLAY_AREA_X + x * GRID_SIZE, PLAY_AREA_Y + y * GRID_SIZE, GRID_SIZE, GRID_SIZE)
                     pygame.draw.rect(screen, color, rect)
                     pygame.draw.rect(screen, BLACK, rect, 1)
+
+    def clear_lines(self):
+        new_grid = [row for row in self.grid if any(cell is None for cell in row)]
+        cleared = self.height - len(new_grid)
+        while len(new_grid) < self.height:
+            new_grid.insert(0, [None for _ in range(self.width)])
+        self.grid = new_grid
+        return cleared
